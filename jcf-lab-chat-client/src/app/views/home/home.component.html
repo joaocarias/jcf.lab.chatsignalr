@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-toolbar color="primary">
+        <span>SignalR Chat</span>
+    </mat-toolbar>
+
+    <div class="messages">
+        <div *ngFor="let message of messages; let i = index" [ngClass]="{'message-line me': message.userName === userName, 'message-line other': message.userName !== userName}">
+            <div [ngClass]="{'message me': message.userName === userName, 'message other': message.userName !== userName}">
+                <div class="user-name">{{ message.userName }}</div>
+                <div>{{ message.text }}</div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <form class="form">
+            <mat-form-field class="input">            
+                <mat-label>Escreva sua mensagem</mat-label>
+                <input matInput placeholder="Olá" [formControl]="messageControl">
+            </mat-form-field>
+            <button (click)="sendMessage" color="primary" mat-mini-fab arrial-label="Enviar">
+                <mat-icon>send</mat-icon>
+            </button>
+        </form>
+    </div>
+
+</div>
